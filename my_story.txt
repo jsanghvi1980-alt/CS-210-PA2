@@ -1,6 +1,108 @@
 START_HP 10
-SCENE Replace this file with your own story.
+SCENE At Veyra's Grimoire Ceremony, Kael receives a four-leaf book. Your hands stay empty. The village calls you Hollow, and a monster howls beyond the chapel.
 HP 0
 LOOT 0
 ITEM none
-CHOICES 0
+CHOICES 3
+LABEL Chase the glowing light into the forest
+  SCENE The light vanishes. A beast springs from the roots, and you grab a discarded rusty sword.
+  HP -4
+  LOOT 2
+  ITEM Rusty Sword
+  CHOICES 1
+  LABEL Fight the beast alone
+    SCENE Died a Hollow Nobody: the beast strikes again before you can lift the sword.
+    HP -7
+    LOOT 0
+    ITEM none
+    CHOICES 0
+LABEL Search the chapel cellar
+  SCENE Beneath the altar, a gold chest glitters louder than the warning carved into its lid.
+  HP -1
+  LOOT 8
+  ITEM none
+  CHOICES 1
+  LABEL Open the gold chest
+    SCENE Crushed Under the Chapel: the Cursed Coin springs a trap, and the ceiling falls.
+    HP -10
+    LOOT 20
+    ITEM Cursed Coin
+    CHOICES 0
+LABEL Help the wounded stranger
+  SCENE Orsen, a retired Magic Knight, clutches your sleeve. He offers a Silver Charm and whispers about a black clover book in the Tower.
+  HP 0
+  LOOT 1
+  ITEM Silver Charm
+  CHOICES 3
+  LABEL Share your bread and bandage Orsen
+    SCENE Orsen accepts your help. He gives you Healing Salve and offers to teach you how to survive the night.
+    HP 2
+    LOOT 2
+    ITEM Healing Salve
+    CHOICES 1
+    LABEL Train under the stars
+      SCENE You endure Orsen's drills. He wraps an Ember Cloak around your shoulders before the monster returns.
+      HP 1
+      LOOT 3
+      ITEM Ember Cloak
+      CHOICES 1
+      LABEL Learn to sense mana
+        SCENE You sense a current beneath Veyra and find a Mana Stone lodged in the old road.
+        HP 0
+        LOOT 4
+        ITEM Mana Stone
+        CHOICES 1
+        LABEL Follow the current to the Tower
+          SCENE At the Grimoire Tower, your Silver Charm opens the clover-shaped lock. The door bites back, but you enter.
+          HP -1
+          LOOT 3
+          ITEM none
+          CHOICES 1
+          LABEL Claim the floating black book
+            SCENE A cracked five-leaf grimoire floats into your hands. Its anti-magic silences the Tower's curse.
+            HP -2
+            LOOT 7
+            ITEM Five-Leaf Clover Grimoire
+            CHOICES 1
+            LABEL Uncover the Tower's secret
+              SCENE The Tower feeds on Veyra's mana. Kael arrives, and together you reach its heart.
+              HP -1
+              LOOT 4
+              ITEM none
+              CHOICES 2
+              LABEL Destroy the Tower and free Veyra
+                SCENE Fifth Leaf Hero: you and Kael break the Tower's hold, and Hollow becomes a name for someone who made room for others.
+                HP 0
+                LOOT 8
+                ITEM none
+                CHOICES 0
+              LABEL Take the Tower's power
+                SCENE The Hollow Sovereign: you seize the Tower's magic, but Veyra fears its new ruler.
+                HP 0
+                LOOT 6
+                ITEM none
+                CHOICES 0
+  LABEL Steal Orsen's purse
+    SCENE You snatch his purse. A hooded thief follows the coins through the dark.
+    HP -3
+    LOOT 12
+    ITEM none
+    CHOICES 1
+    LABEL Run through the black mist
+      SCENE Lost in the Mist: the thief catches you, and the cursed fog drains your last strength.
+      HP -8
+      LOOT 0
+      ITEM none
+      CHOICES 0
+  LABEL Follow Orsen's map without waiting
+    SCENE You hurry toward the Tower. Without his training, you cannot break its seal, but you find Kael fighting the beast.
+    HP -2
+    LOOT 2
+    ITEM none
+    CHOICES 1
+    LABEL Help Kael defeat the beast
+      SCENE The Rival's Respect: you save Kael without a grimoire, and he finally calls you by your name.
+      HP -2
+      LOOT 5
+      ITEM none
+      CHOICES 0
