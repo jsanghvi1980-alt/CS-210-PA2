@@ -26,7 +26,7 @@ For these answers, `n` is the number of scenes, `h` is the number of scenes in o
 
 11. **readScene (TODO 11):** It reads one scene and then calls itself to read each choice's scene. It also rejects a scene with more than three choices. If loading fails, it deletes the part it already built. Each scene is read once, so it is O(n).
 
-12. **askChoice (TODO 12):** It reads what the player typed and keeps asking until they enter a valid choice or input ends. This depends on how much the player types and how often they retry, not on `n`. Checking one line takes O(length of the line).
+12. **askChoice (TODO 12):** It reads what the player typed and keeps asking until they enter a valid choice or input ends. It is O(L) per attempt, where L is the length of the typed line, and independent of `n`.
 
 13. **play (TODO 13):** It goes through one route, adds HP and loot, and puts new items in the bag. It stops when the player dies or reaches an ending. It visits at most `h` scenes, and checking the bag for an item can take O(b), so the worst case is O(hb).
 
@@ -36,7 +36,7 @@ For these answers, `n` is the number of scenes, `h` is the number of scenes in o
 
 16. **printEndings (TODO 16):** It goes through the choices in order and prints the path when it finds an ending. Each scene is visited once, so the tree traversal is O(n). Making and printing the path strings takes extra time.
 
-17. **greedyRun (TODO 17):** It takes the choice with the most loot in the next scene, without looking farther ahead. It only walks one route and checks at most three choices per scene, so it is O(h), or at most O(n).
+17. **greedyRun (TODO 17):** It takes the choice with the most loot in the next scene. It is O(h) because it walks only one route and never looks at the rest of the tree. That is why it can be wrong: in my story it grabs the cellar loot and misses the safer, richer route through Father Orsi.
 
 18. **bestLoot (TODO 18):** It tries every branch and ignores paths where HP reaches zero. It returns the most loot from a surviving route and saves that route's path. It visits every scene once, so the tree traversal is O(n). Copying the path strings can take extra time, up to O(nh) in the worst case.
 
@@ -52,13 +52,13 @@ First, I delete each child in the choices array. Each child deletes its own chil
 
 ## 4. Greedy compared with optimal in my story
 
-My story is an alternate Black Clover adventure with Asta, Yuno, Father Orsi, and Sister Lily. Greedy takes path `2-1`. It chooses the church cellar because that scene gives 8 loot right away, more than either of the other first choices. Then it opens the gold chest. The chest gives more loot, but the trap brings Asta's HP down to -1. Greedy dies with **28 loot**.
+My story is an alternate Black Clover adventure with Asta, Yuno, Father Orsi, and Sister Lily. Greedy takes path `2-1`. At the first choice, the church cellar (`2`) offers **+8 loot**, while helping Father Orsi (`3`) offers only **+1** right away. The cellar looks better locally, so greedy goes there and opens the gold chest. The trap brings Asta's HP down to -1. Greedy dies with **28 loot**.
 
 Optimal takes path `3-1-1-1-1-1-1-1`. Asta helps Father Orsi, trains, gets the five-leaf grimoire, and destroys the Tower. He ends with **9 HP and 32 loot**. Greedy loses because it only looks at the next reward and does not see that the chest is a trap.
 
 ## 5. Why is bestLoot O(n) if it tries every path?
 
-Checking every path might sound exponential. But this is a tree, so the different branches do not join back together. `bestLoot` visits each scene once as it goes down the tree. It does not go back to the root and redo the same scenes for each ending. That makes the work of visiting scenes O(n). The path strings can still add extra copying time.
+Checking every path might sound exponential. But this is a tree, so the different branches do not join back together. `bestLoot` visits each scene once as it goes down the tree. It does not go back to the root and redo the same scenes for each ending. The **scene visits are O(n)**. Each recursive call also builds a path with `extendPath(...)`, so copying strings of up to `h` choice numbers makes the honest worst-case time **O(n·h)** when we count that work too.
 
 ## 6. How I use List
 

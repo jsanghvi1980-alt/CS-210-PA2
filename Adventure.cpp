@@ -1,6 +1,17 @@
 #include "Adventure.h"
 #include <iostream>
 
+// Converts a whole numeric field without letting malformed input crash the game.
+static bool parseInt(const std::string& text, int& out) {
+    try {
+        size_t used = 0;
+        out = std::stoi(text, &used);
+        return used == text.size();
+    } catch (...) {
+        return false;
+    }
+}
+
 // ===================== GIVEN HELPERS (do not change) =====================
 
 // Reads the next line that is not blank.
@@ -75,7 +86,10 @@ bool Adventure::load(const std::string& fileName) {
         return false;
     }
 
-    startHp_ = std::stoi(value);
+    if (!parseInt(value, startHp_)) {
+        std::cout << "Error: invalid START_HP number." << std::endl;
+        return false;
+    }
 
     Scene<Moment>* root = readScene(in, "START");
 
@@ -110,9 +124,12 @@ Scene<Moment>* Adventure::readScene(std::ifstream& in, const std::string& label)
         return nullptr;
     }
 
-    int hpChange = std::stoi(hpText);
-    int loot = std::stoi(lootText);
-    int numChoices = std::stoi(choicesText);
+    int hpChange, loot, numChoices;
+    if (!parseInt(hpText, hpChange) || !parseInt(lootText, loot) ||
+        !parseInt(choicesText, numChoices)) {
+        std::cout << "Error: invalid number in scene \"" << text << "\"." << std::endl;
+        return nullptr;
+    }
 
     if (numChoices < 0 || numChoices > Scene<Moment>::MAX_CHOICES) {
         std::cout << "Error: scene \"" << text << "\" has "
@@ -171,6 +188,10 @@ int Adventure::askChoice(int numChoices) {
             }
 
             choice = choice * 10 + (character - '0');
+            if (choice > numChoices) {
+                isNumber = false;
+                break;
+            }
         }
 
         if (isNumber && choice >= 1 && choice <= numChoices) {
