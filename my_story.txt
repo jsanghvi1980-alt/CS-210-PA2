@@ -9,11 +9,17 @@ LABEL Chase the glowing light into the forest
   HP -4
   LOOT 2
   ITEM Rusty Sword
-  CHOICES 1
+  CHOICES 2
   LABEL Fight the beast alone
     SCENE Died a Hollow Nobody: the beast strikes again before you can lift the sword.
     HP -7
     LOOT 0
+    ITEM none
+    CHOICES 0
+  LABEL Escape toward the village
+    SCENE The Forest Survivor: you warn Veyra about the beast and live to fight another day.
+    HP -1
+    LOOT 3
     ITEM none
     CHOICES 0
 LABEL Search the chapel cellar
@@ -21,12 +27,18 @@ LABEL Search the chapel cellar
   HP -1
   LOOT 8
   ITEM none
-  CHOICES 1
+  CHOICES 2
   LABEL Open the gold chest
     SCENE Crushed Under the Chapel: the Cursed Coin springs a trap, and the ceiling falls.
     HP -10
     LOOT 20
     ITEM Cursed Coin
+    CHOICES 0
+  LABEL Open the plain wooden box
+    SCENE The Chapel Guardian: you find an old sword and hold the cellar door until everyone escapes.
+    HP -2
+    LOOT 6
+    ITEM Rusty Sword
     CHOICES 0
 LABEL Help the wounded stranger
   SCENE Orsen, a retired Magic Knight, clutches your sleeve. He offers a Silver Charm and whispers about a black clover book in the Tower.
@@ -39,31 +51,31 @@ LABEL Help the wounded stranger
     HP 2
     LOOT 2
     ITEM Healing Salve
-    CHOICES 1
+    CHOICES 2
     LABEL Train under the stars
       SCENE You endure Orsen's drills. He wraps an Ember Cloak around your shoulders before the monster returns.
       HP 1
       LOOT 3
       ITEM Ember Cloak
-      CHOICES 1
+      CHOICES 2
       LABEL Learn to sense mana
         SCENE You sense a current beneath Veyra and find a Mana Stone lodged in the old road.
         HP 0
         LOOT 4
         ITEM Mana Stone
-        CHOICES 1
+        CHOICES 2
         LABEL Follow the current to the Tower
           SCENE At the Grimoire Tower, your Silver Charm opens the clover-shaped lock. The door bites back, but you enter.
           HP -1
           LOOT 3
           ITEM none
-          CHOICES 1
+          CHOICES 2
           LABEL Claim the floating black book
             SCENE A cracked five-leaf grimoire floats into your hands. Its anti-magic silences the Tower's curse.
             HP -2
             LOOT 7
             ITEM Five-Leaf Clover Grimoire
-            CHOICES 1
+            CHOICES 2
             LABEL Uncover the Tower's secret
               SCENE The Tower feeds on Veyra's mana. Kael arrives, and together you reach its heart.
               HP -1
@@ -82,16 +94,52 @@ LABEL Help the wounded stranger
                 LOOT 6
                 ITEM none
                 CHOICES 0
+            LABEL Seal the book and leave the Tower
+              SCENE The Reluctant Mage: you keep the grimoire sealed and guide Orsen safely home.
+              HP 0
+              LOOT 2
+              ITEM none
+              CHOICES 0
+          LABEL Refuse the black book
+            SCENE The Unwritten Knight: you reject the book and defend Veyra with your own courage.
+            HP -2
+            LOOT 4
+            ITEM none
+            CHOICES 0
+        LABEL Return to warn Kael
+          SCENE The Tower Warning: Kael believes your warning, and together you evacuate the village.
+          HP 0
+          LOOT 5
+          ITEM none
+          CHOICES 0
+      LABEL Guard the chapel with your cloak
+        SCENE The Ember Watch: your cloak shields the children until the monster retreats.
+        HP -1
+        LOOT 5
+        ITEM none
+        CHOICES 0
+    LABEL Stay with Orsen and heal the wounded
+      SCENE The Village Healer: you use Orsen's salve to save the wounded, even without a grimoire.
+      HP 1
+      LOOT 5
+      ITEM none
+      CHOICES 0
   LABEL Steal Orsen's purse
     SCENE You snatch his purse. A hooded thief follows the coins through the dark.
     HP -3
     LOOT 12
     ITEM none
-    CHOICES 1
+    CHOICES 2
     LABEL Run through the black mist
       SCENE Lost in the Mist: the thief catches you, and the cursed fog drains your last strength.
       HP -8
       LOOT 0
+      ITEM none
+      CHOICES 0
+    LABEL Return the purse and face Orsen
+      SCENE The Second Chance: Orsen accepts your apology and sends you to help the villagers.
+      HP 1
+      LOOT 2
       ITEM none
       CHOICES 0
   LABEL Follow Orsen's map without waiting
@@ -99,10 +147,16 @@ LABEL Help the wounded stranger
     HP -2
     LOOT 2
     ITEM none
-    CHOICES 1
+    CHOICES 2
     LABEL Help Kael defeat the beast
       SCENE The Rival's Respect: you save Kael without a grimoire, and he finally calls you by your name.
       HP -2
       LOOT 5
+      ITEM none
+      CHOICES 0
+    LABEL Leave Kael and seek shelter
+      SCENE The Safe Road: you survive the night, but wonder whether Kael survived alone.
+      HP 0
+      LOOT 1
       ITEM none
       CHOICES 0
